@@ -1,0 +1,15 @@
+{
+    "name": "administrator/framework",
+    "authors": [
+        {
+            "name": "Liang",
+            "email": "cloudsthere@163.com"
+        }
+    ],
+    "require": {},
+    "autoload" : {
+        "psr-4" : {
+            "Framework\\" : "framework"
+        }
+    }
+}
