@@ -8,16 +8,17 @@ class Request
     {
         $this->parseRequestUri();
         $this->get = $_GET;
-        echo '<pre>';
-        var_dump($_SERVER);
-        var_dump($_GET);
+        $this->post = $_POST;
+        $this->input = array_merge($this->get, $this->post);
     }
 
     public function parseRequestUri()
     {
         $this->uri = $_SERVER['REQUEST_URI'];
-        if (strpos($this->uri, '?') !== false) {
-            
-        }
+        @list($this->path, $this->queryString) = explode('?', $this->uri);
+
+        $paths = array_merge(array_filter(explode('/', $this->path)));
+        $this->controller = '\App\Controllers\\'.ucfirst($paths[0]) . 'Controller';
+        $this->action = $paths[1];
     }
 }

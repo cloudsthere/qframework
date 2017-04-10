@@ -11,6 +11,7 @@ class Kernel
 
     public function handle($request)
     {
-        return new Response('hehe');
+        $response = (new $request->controller)->{$request->action}();
+        return new Response($response);
     }
 }
